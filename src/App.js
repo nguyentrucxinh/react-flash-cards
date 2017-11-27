@@ -8,8 +8,8 @@ import {
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Memorize from './components/Memorize';
-import Cards from './components/Cards';
-import Edit from './components/Edit';
+import Cards from './components/Card/Cards';
+import Edit from './components/Card/Edit';
 
 class App extends Component {
   render() {

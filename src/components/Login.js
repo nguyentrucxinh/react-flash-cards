@@ -10,11 +10,11 @@ class Login extends Component {
                 <div className="well">
                     <form action="login" method="post">
                         <div className="form-group">
-                            <label for="username">Username:</label>
+                            <label htmlFor="username">Username:</label>
                             <input type="text" name="username" className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input type="password" name="password" className="form-control"/>
                         </div>
                         <div className="form-group">

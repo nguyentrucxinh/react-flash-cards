@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 
 class CardList extends Component {
 
-    constructor(props){
-        super(props);
-    }
-
     render() {
         return (
             <table className="table table-bordered">
                 <tbody>
                     {this.props.cards.map(this.renderCard)}
 
-                    <tr>
-                        <td>
-                            <em>No cards to show.</em>
-                        </td>
-                    </tr>
+                    {this.props.cards.length === 0 &&
+                        <tr>
+                            <td>
+                                <em>No cards to show.</em>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
 
             </table>
@@ -27,11 +25,11 @@ class CardList extends Component {
         return (
             <tr key={card.id}>
                 <td>
-                    <a href="/edit" className="btn btn-xs btn-primary"><i className="fa fa-pencil" aria-hidden="true"></i>{card.front}</a>
+                    <a href="/edit" className="btn btn-xs btn-primary"><i className="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                 </td>
                 <td className="cardContent">
                     <h4>
-                        {card.back}
+                        {card.front}
                     </h4>
 
                     <pre><code>{card.back}</code></pre>

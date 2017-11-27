@@ -9,20 +9,20 @@ class Edit extends Component {
                     <form action="edit_card" method="post" className="cardForm">
 
                         <div className="form-group">
-                            <label for="general" className="btn btn-default btn-lg">General &nbsp;
+                            <label htmlFor="general" className="btn btn-default btn-lg">General &nbsp;
                 <input type="radio" name="type" value="1"
                                     id="general" checked />
                             </label>
-                            <label for="code" className="btn btn-default btn-lg">Code &nbsp;
-                <input type="radio" name="type" value="2" id="code" checked />
+                            <label htmlFor="code" className="btn btn-default btn-lg">Code &nbsp;
+                <input type="radio" name="type" value="2" id="code" />
                             </label>
                         </div>
                         <div className="form-group">
-                            <label for="front">Front of Card</label>
+                            <label htmlFor="front">Front of Card</label>
                             <input type="text" name="front" id="front" className="form-control" value="card.front" />
                         </div>
                         <div className="form-group">
-                            <label for="back">Back of Card</label>
+                            <label htmlFor="back">Back of Card</label>
                             <textarea name="back"
                                 className="form-control"
                                 id="back"
@@ -34,7 +34,7 @@ class Edit extends Component {
                                 <div className="checkbox">
                                     <label>
                                         <input type="checkbox" name="known"
-                                            value="1" checked /> Known
+                                            value="1" /> Known
                     </label>
                                 </div>
                             </div>

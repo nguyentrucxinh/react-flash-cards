@@ -48,7 +48,7 @@ class Cards extends Component {
                 </div>
 
                 <div className="page-header">
-                    <h2>cards|length Card</h2>
+                    <h2>{this.state.cards.length} Card(s)</h2>
                 </div>
                 <div className="btn-group btn-group-md" role="group" aria-label="filters">
                     <a href="" className="btn btn-primary">All</a>
