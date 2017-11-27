@@ -50,7 +50,7 @@ class Memorize extends Component {
 
                 <div className="row">
                     <div className="col-xs-12 text-center">
-                        <a href="javascript:" className="btn btn-primary btn-lg flipCard">
+                        <a href="" className="btn btn-primary btn-lg flipCard">
                             <i className="fa fa-exchange"></i>
                             Flip Card
             </a>

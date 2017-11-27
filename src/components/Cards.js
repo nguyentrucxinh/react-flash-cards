@@ -51,7 +51,7 @@ class Cards extends Component {
 
                     <tr>
                         <td>
-                            <a href="edit" className="btn btn-xs btn-primary"><i className="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="/edit" className="btn btn-xs btn-primary"><i className="fa fa-pencil" aria-hidden="true"></i>test</a>
                         </td>
                         <td className="cardContent">
                             <h4>
