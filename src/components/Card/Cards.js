@@ -3,6 +3,8 @@ import axios from "axios";
 
 import CardList from './CardList';
 
+const API_URL = "http://api-dot-foodmenulist.appspot.com/api/user/cards";
+
 class Cards extends Component {
 
     constructor() {
@@ -20,13 +22,13 @@ class Cards extends Component {
             <div>
                 <div className="well editPanel">
                     <h2>Add a Card</h2>
-                    <form action="add_card" method="post" className="cardForm">
+                    <form className="cardForm">
                         <div className="form-group">
                             <label htmlFor="general" className="toggleButton btn btn-default btn-lg">General &nbsp;
-                    <input type="radio" name="type" value="1" id="general" />
+                                <input type="radio" name="type" value="1" id="general" />
                             </label>
                             <label htmlFor="code" className="toggleButton btn btn-default btn-lg">Code &nbsp;
-                    <input type="radio" name="type" value="2" id="code" />
+                                <input type="radio" name="type" value="2" id="code" />
                             </label>
                         </div>
                         <div className="form-group fieldFront">
@@ -35,7 +37,8 @@ class Cards extends Component {
                         </div>
                         <div className="form-group fieldBack">
                             <label htmlFor="back">Back of Card</label>
-                            <textarea name="back"
+                            <textarea
+                                name="back"
                                 className="form-control"
                                 id="back"
                                 placeholder="back of card"
@@ -71,13 +74,31 @@ class Cards extends Component {
 
         let self = this;
 
-        axios.get("http://api-dot-foodmenulist.appspot.com/api/user/cards")
+        axios.get(API_URL)
             .then(response => {
                 console.log(response);
                 console.log(response.data);
                 self.setState({
                     cards: response.data
                 });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    create() {
+        console.log("create()");
+
+        axios.post(API_URL, {
+            type: false,
+            front: "",
+            back: "",
+            known: false
+        })
+            .then(response => {
+                console.log(response);
+                console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
