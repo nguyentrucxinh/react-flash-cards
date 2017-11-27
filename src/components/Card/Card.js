@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import { connect } from 'react-redux';
 
+import * as actionCreators from '../../actions/index.js'
 import CardList from './CardList';
 
-const API_URL = "http://api-dot-foodmenulist.appspot.com/api/user/cards";
+const mapStateToProps = (state) => {
+    return state;
+};
 
-class Cards extends Component {
+class Card extends Component {
 
-    constructor() {
-        super();
-
-        this.state = {
-            cards: []
-        };
-
-        this.create = this.create.bind(this);
-
-        this.findAll();
+    componentWillMount() {
+        this.props.findAllAxios();
     }
 
     render() {
@@ -27,7 +22,7 @@ class Cards extends Component {
                     <form onSubmit={this.create} className="cardForm">
                         <div className="form-group">
                             <label htmlFor="general" className="toggleButton btn btn-default btn-lg">General &nbsp;
-                                <input name="type" type="radio" id="general" checked />
+                                <input name="type" type="radio" id="general" defaultChecked />
                             </label>
                             <label htmlFor="code" className="toggleButton btn btn-default btn-lg">Code &nbsp;
                                 <input name="type" type="radio" id="code" />
@@ -52,7 +47,7 @@ class Cards extends Component {
                 </div>
 
                 <div className="page-header">
-                    <h2>{this.state.cards.length} Card(s)</h2>
+                    <h2>{this.props.cards.length} Card(s)</h2>
                 </div>
                 <div className="btn-group btn-group-md" role="group" aria-label="filters">
                     <a href="" className="btn btn-primary">All</a>
@@ -65,46 +60,32 @@ class Cards extends Component {
                 <br />
                 <br />
 
-                <CardList cards={this.state.cards} />
+                <CardList cards={this.props.cards} />
             </div>
         );
     }
 
-    findAll() {
-        console.log("findAll()");
-
-        let self = this;
-
-        axios.get(API_URL)
-            .then(response => {
-                console.log(response);
-                console.log(response.data);
-                self.setState({
-                    cards: response.data
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
+    test() {
+        console.log(this.props);
     }
 
-    create(event) {
+    create() {
         console.log("create()");
 
-        axios.post(API_URL, {
-            type: false,
-            front: this.back.value,
-            back: this.front.value,
-            known: false
-        })
-            .then(response => {
-                console.log(response);
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        // axios.post(API_URL, {
+        //     type: false,
+        //     front: this.back.value,
+        //     back: this.front.value,
+        //     known: false
+        // })
+        //     .then(response => {
+        //         console.log(response);
+        //         console.log(response.data);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
     }
 }
 
-export default Cards;
+export default connect(mapStateToProps, actionCreators)(Card);

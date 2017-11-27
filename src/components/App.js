@@ -5,11 +5,11 @@ import {
   Link
 } from 'react-router-dom'
 
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Memorize from './components/Memorize';
-import Cards from './components/Card/Cards';
-import Edit from './components/Card/Edit';
+import Login from './Login';
+import Logout from './Logout';
+import Memorize from './Memorize';
+import Card from './Card/Card';
+import Edit from './Card/Edit';
 
 class App extends Component {
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
 
                     <li><Link to="/login">Login</Link></li>
 
-                    <li><Link to="/cards">Cards</Link></li>
+                    <li><Link to="/card">Card</Link></li>
                     <li><Link to="/memorize">Memorize</Link></li>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     <li><Link to="/logout">Log out</Link></li>
@@ -43,7 +43,7 @@ class App extends Component {
               <div className="alert alert-success" role="alert"> message </div>
 
               <Route exact path="/login" component={Login} />
-              <Route path="/cards" component={Cards}/>
+              <Route path="/card" component={Card}/>
               <Route path="/memorize" component={Memorize}/>
               <Route path="/logout" component={Logout}/>
               <Route path="/edit" component={Edit}/>

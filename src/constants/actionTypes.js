@@ -1,0 +1,1 @@
+export const CARD_PAGE_LOADED = 'CARD_PAGE_LOADED';
