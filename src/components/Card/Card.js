@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../actions/index.js'
+import * as actionCreators from '../../actions/cardAction.js'
 import CardList from './CardList';
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 class Card extends Component {
 
     componentWillMount() {
-        this.props.findAllAxios();
+        this.props.findAll();
     }
 
     render() {

@@ -1,7 +1,7 @@
 // import { combineReducers } from 'redux';
 
-// import card from './reducers/card';
+// import cardReducer from './reducers/cardReducer';
 
 // export default combineReducers({
-//   card
+//     cardReducer
 // });

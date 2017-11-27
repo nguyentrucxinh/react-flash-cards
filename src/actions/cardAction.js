@@ -3,7 +3,7 @@ import axios from 'axios';
 import { CARD_PAGE_LOADED } from '../constants/actionTypes';
 import { API_URL } from '../constants/api';
 
-export function findAllAxios() {
+export function findAll() {
     return (dispatch) => {
         return axios.get(API_URL)
             .then((response) => {
@@ -12,7 +12,7 @@ export function findAllAxios() {
     }
 }
 
-export function findAll(cards) {
+export function findAllAction(cards) {
     return {
         type: CARD_PAGE_LOADED,
         cards: cards
