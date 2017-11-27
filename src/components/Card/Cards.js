@@ -14,6 +14,8 @@ class Cards extends Component {
             cards: []
         };
 
+        this.create = this.create.bind(this);
+
         this.findAll();
     }
 
@@ -22,23 +24,22 @@ class Cards extends Component {
             <div>
                 <div className="well editPanel">
                     <h2>Add a Card</h2>
-                    <form className="cardForm">
+                    <form onSubmit={this.create} className="cardForm">
                         <div className="form-group">
                             <label htmlFor="general" className="toggleButton btn btn-default btn-lg">General &nbsp;
-                                <input type="radio" name="type" value="1" id="general" />
+                                <input name="type" type="radio" id="general" checked />
                             </label>
                             <label htmlFor="code" className="toggleButton btn btn-default btn-lg">Code &nbsp;
-                                <input type="radio" name="type" value="2" id="code" />
+                                <input name="type" type="radio" id="code" />
                             </label>
                         </div>
                         <div className="form-group fieldFront">
                             <label htmlFor="front">Front of Card</label>
-                            <input type="text" name="front" id="front" className="form-control" />
+                            <input type="text" ref={(front) => this.front = front} id="front" className="form-control" />
                         </div>
                         <div className="form-group fieldBack">
                             <label htmlFor="back">Back of Card</label>
-                            <textarea
-                                name="back"
+                            <textarea ref={(back) => this.back = back}
                                 className="form-control"
                                 id="back"
                                 placeholder="back of card"
@@ -87,13 +88,13 @@ class Cards extends Component {
             });
     }
 
-    create() {
+    create(event) {
         console.log("create()");
 
         axios.post(API_URL, {
             type: false,
-            front: "",
-            back: "",
+            front: this.back.value,
+            back: this.front.value,
             known: false
         })
             .then(response => {
