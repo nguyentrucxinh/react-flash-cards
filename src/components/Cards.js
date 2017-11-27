@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
+import axios from "axios";
+
+import CardList from './CardList';
 
 class Cards extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            cards: []
+        };
+
+        this.findAll();
+    }
+
     render() {
         return (
             <div>
@@ -8,19 +22,19 @@ class Cards extends Component {
                     <h2>Add a Card</h2>
                     <form action="add_card" method="post" className="cardForm">
                         <div className="form-group">
-                            <label for="general" className="toggleButton btn btn-default btn-lg">General &nbsp;
+                            <label htmlFor="general" className="toggleButton btn btn-default btn-lg">General &nbsp;
                     <input type="radio" name="type" value="1" id="general" />
                             </label>
-                            <label for="code" className="toggleButton btn btn-default btn-lg">Code &nbsp;
+                            <label htmlFor="code" className="toggleButton btn btn-default btn-lg">Code &nbsp;
                     <input type="radio" name="type" value="2" id="code" />
                             </label>
                         </div>
                         <div className="form-group fieldFront">
-                            <label for="front">Front of Card</label>
+                            <label htmlFor="front">Front of Card</label>
                             <input type="text" name="front" id="front" className="form-control" />
                         </div>
                         <div className="form-group fieldBack">
-                            <label for="back">Back of Card</label>
+                            <label htmlFor="back">Back of Card</label>
                             <textarea name="back"
                                 className="form-control"
                                 id="back"
@@ -47,31 +61,27 @@ class Cards extends Component {
                 <br />
                 <br />
 
-                <table className="table table-bordered">
-
-                    <tr>
-                        <td>
-                            <a href="/edit" className="btn btn-xs btn-primary"><i className="fa fa-pencil" aria-hidden="true"></i>test</a>
-                        </td>
-                        <td className="cardContent">
-                            <h4>
-
-                            </h4>
-
-                            <pre><code>card.back|escape</code></pre>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <em>No cards to show.</em>
-                        </td>
-                    </tr>
-
-                </table>
+                <CardList cards={this.state.cards} />
             </div>
         );
+    }
+
+    findAll() {
+        console.log("findAll()");
+
+        let self = this;
+
+        axios.get("http://api-dot-foodmenulist.appspot.com/api/user/cards")
+            .then(response => {
+                console.log(response);
+                console.log(response.data);
+                self.setState({
+                    cards: response.data
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 }
 
