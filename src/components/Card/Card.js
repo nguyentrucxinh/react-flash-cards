@@ -30,11 +30,11 @@ class Card extends Component {
                         </div>
                         <div className="form-group fieldFront">
                             <label htmlFor="front">Front of Card</label>
-                            <input type="text" ref={(front) => this.front = front} id="front" className="form-control" />
+                            <input type="text" id="front" className="form-control" />
                         </div>
                         <div className="form-group fieldBack">
                             <label htmlFor="back">Back of Card</label>
-                            <textarea ref={(back) => this.back = back}
+                            <textarea
                                 className="form-control"
                                 id="back"
                                 placeholder="back of card"

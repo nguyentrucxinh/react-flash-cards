@@ -3,16 +3,8 @@ import {
 } from '../constants/actionTypes';
 
 const defaultState = {
-    cards: [
-        {
-            id: 0,
-            type: false,
-            front: "front 111",
-            back: "back 111",
-            known: false
-        }
-    ]
-  };
+    cards: []
+};
 
 export default (state = defaultState, action) => {
     switch (action.type) {
