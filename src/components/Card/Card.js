@@ -10,11 +10,26 @@ const mapStateToProps = (state) => {
 
 class Card extends Component {
 
+    constructor() {
+        super();
+        console.log("constructor()");
+    }
+
     componentWillMount() {
-        this.props.findAll();
+        console.log("componentWillMount()");
+        // this.props.findAll();
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount()");
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount()");
     }
 
     render() {
+        console.log("render()");
         return (
             <div>
                 <div className="well editPanel">
