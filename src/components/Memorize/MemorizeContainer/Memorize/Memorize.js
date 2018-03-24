@@ -6,12 +6,21 @@ class Memorize extends Component {
     super(props)
     this.props.onGetCardRandom()
 
+    this.state = {
+      isFront: true
+    }
+
     this.handleButtonNextCard = this.handleButtonNextCard.bind(this)
     this.handleButtonKnown = this.handleButtonKnown.bind(this)
+    this.handleButtonFlipCard = this.handleButtonFlipCard.bind(this)
   }
 
   handleButtonNextCard (e) {
     e.preventDefault()
+
+    // Back to front card
+    this.setState({ isFront: true })
+
     this.props.onGetCardRandom()
   }
 
@@ -20,7 +29,18 @@ class Memorize extends Component {
     this.props.onUpdateCard(this.props.card._id, { known: true })
   }
 
-  renderBack () {
+  handleButtonFlipCard (e) {
+    e.preventDefault()
+    this.setState({ isFront: !this.state.isFront })
+  }
+
+  renderContent () {
+    // Front
+    if (this.state.isFront) {
+      return <h3 className='text-center'>{this.props.card.front}</h3>
+    }
+
+    // Back
     if (this.props.card.type === 1) {
       return (
         <div className='text-center largerText'>
@@ -57,33 +77,24 @@ class Memorize extends Component {
         {/* Card */}
         <div className='row memorizePanel'>
           <div className='col-xs-8 col-xs-offset-2'>
+
             <div className='panel panel-default cardFront'>
-              <div className='panel-body'>
+              <div className={'panel-body ' + (this.state.isFront ? '' : 'bg-info')}>
                 <div className='alignContainer'>
                   <div className='alignMiddle frontText'>
-                    <h3 className='text-center'>{this.props.card.front}</h3>
+                    {this.renderContent()}
                   </div>
                 </div>
               </div>
             </div>
-            <div className='panel panel-primary cardBack'>
-              <div className='panel-body'>
-                <div className='alignContainer'>
-                  <div className='alignMiddle frontText'>
 
-                    {this.renderBack()}
-
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Buttons */}
         <div className='row'>
           <div className='col-xs-12 text-center'>
-            <a className='btn btn-primary btn-lg flipCard'>
+            <a onClick={this.handleButtonFlipCard} className='btn btn-primary btn-lg flipCard'>
               <i className='fa fa-exchange' />
               Flip Card
             </a>
