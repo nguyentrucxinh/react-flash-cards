@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { FETCH_CARD } from '../constants/actionTypes'
+import { FETCH_CARD_TYPE } from '../constants/actionTypes'
 import { HOST_API, GET_CARD } from '../constants/api'
 
 const receiveCard = card => ({
-  type: FETCH_CARD,
+  type: FETCH_CARD_TYPE,
   payload: {
     card
   }
