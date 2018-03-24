@@ -5,9 +5,12 @@ class List extends Component {
   render () {
     return (
       <div>
+        {/* Sum */}
         <div className='page-header'>
           <h2>0 Card(s)</h2>
         </div>
+
+        {/* Filter */}
         <div className='btn-group btn-group-md' role='group' aria-label='filters'>
           <a href='' className='btn btn-primary'>All</a>
           <a href='' className='btn btn-default'>General</a>
@@ -19,6 +22,7 @@ class List extends Component {
         <br />
         <br />
 
+        {/* List */}
         <table className='table table-bordered'>
           <tbody>
             <tr>
