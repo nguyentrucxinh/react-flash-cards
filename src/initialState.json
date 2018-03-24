@@ -1,0 +1,18 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "type": false,
+            "front": "aa",
+            "back": "a",
+            "known": false
+        },
+        {
+            "id": 2,
+            "type": false,
+            "front": "Front 2",
+            "back": "Back 2",
+            "known": false
+        }
+    ]
+}
