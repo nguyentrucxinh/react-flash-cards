@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 class Memorize extends Component {
   constructor (props) {
@@ -59,6 +59,8 @@ class Memorize extends Component {
   }
 
   render () {
+    const { card } = this.props
+
     return (
       <div>
 
@@ -66,8 +68,8 @@ class Memorize extends Component {
         <div className='row'>
           <div className='col-xs-12 text-center'>
             <div className='btn-group btn-group-lg' role='group' aria-label='card type'>
-              <a className={'btn btn-' + (this.props.card.type === 1 ? 'primary' : 'default')}>General</a>
-              <a className={'btn btn-' + (this.props.card.type === 2 ? 'primary' : 'default')}>Code</a>
+              <a className={'btn btn-' + (card.type === 1 ? 'primary' : 'default')}>General</a>
+              <a className={'btn btn-' + (card.type === 2 ? 'primary' : 'default')}>Code</a>
             </div>
           </div>
         </div >
@@ -116,6 +118,18 @@ class Memorize extends Component {
       </div >
     )
   }
+}
+
+Memorize.propTypes = {
+  onGetCardRandom: PropTypes.func.isRequired,
+  onUpdateCard: PropTypes.func.isRequired,
+  card: PropTypes.PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    type: PropTypes.number.isRequired,
+    front: PropTypes.string.isRequired,
+    back: PropTypes.string.isRequired,
+    known: PropTypes.bool.isRequired
+  }).isRequired
 }
 
 export default Memorize

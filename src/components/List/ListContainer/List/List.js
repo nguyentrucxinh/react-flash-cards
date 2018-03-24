@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 class List extends Component {
   constructor (props) {
@@ -47,11 +47,13 @@ class List extends Component {
   }
 
   render () {
+    const { cards } = this.props
+
     return (
       <div>
         {/* Sum */}
         <div className='page-header'>
-          <h2>{this.props.cards.length} Card(s)</h2>
+          <h2>{cards.length} Card(s)</h2>
         </div>
 
         {/* Filter */}
@@ -75,8 +77,8 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {(this.props.cards.length > 0)
-              ? this.props.cards.map((value, index) => this.renderRow(value))
+            {(Array.isArray(cards))
+              ? cards.map((value, index) => this.renderRow(value))
               : null
             }
           </tbody>
@@ -84,6 +86,11 @@ class List extends Component {
       </div>
     )
   }
+}
+
+List.propTypes = {
+  onGetCards: PropTypes.func.isRequired,
+  cards: PropTypes.array.isRequired
 }
 
 export default List
