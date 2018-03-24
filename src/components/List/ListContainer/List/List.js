@@ -5,6 +5,45 @@ class List extends Component {
   constructor (props) {
     super(props)
     this.props.onGetCards()
+
+    this.handleButtonEdit = this.handleButtonEdit.bind(this)
+    this.handleButtonDelete = this.handleButtonDelete.bind(this)
+  }
+
+  handleButtonEdit (e) {
+    e.preventDefault()
+  }
+
+  handleButtonDelete (e) {
+    e.preventDefault()
+  }
+
+  renderRow (card) {
+    return (
+      <tr key={card._id}>
+        <td className='col-md-1'>
+          <a onClick={this.handleButtonEdit} className='btn btn-xs btn-primary'>
+            <i className='fa fa-pencil' aria-hidden='true' /> Edit
+          </a>
+          <br />
+          <a onClick={this.handleButtonDelete} className='btn btn-xs btn-danger'>
+            <i className='fa fa-trash' aria-hidden='true' /> Delete
+          </a>
+        </td>
+        <td className='cardContent col-md-11'>
+          <h4>
+            {card.front}
+          </h4>
+
+          <pre>
+            <code>
+              {card.back}
+            </code>
+          </pre>
+
+        </td>
+      </tr>
+    )
   }
 
   render () {
@@ -18,42 +57,28 @@ class List extends Component {
         {/* Filter */}
         <div className='btn-group btn-group-md' role='group' aria-label='filters'>
           <a className='btn btn-primary'>All</a>
-          <a className='btn btn-default'>General</a>
-          <a className='btn btn-default'>Code</a>
-          <a className='btn btn-default'>Known</a>
-          <a className='btn btn-default'>Unknown</a>
+          <a className='btn btn-default disabled'>General</a>
+          <a className='btn btn-default disabled'>Code</a>
+          <a className='btn btn-default disabled'>Known</a>
+          <a className='btn btn-default disabled'>Unknown</a>
         </div>
 
         <br />
         <br />
 
         {/* List */}
-        <table className='table table-bordered'>
-          <tbody>
+        <table className='table table-bordered table-hover'>
+          <thead>
             <tr>
-              <td>
-                <a className='btn btn-xs btn-primary'>
-                  <i className='fa fa-pencil' aria-hidden='true' /> Edit
-                </a>
-              </td>
-              <td>
-                <a className='btn btn-xs btn-primary'>
-                  <i className='fa fa-trash' aria-hidden='true' /> Delete
-                </a>
-              </td>
-              <td className='cardContent'>
-                <h4>
-                  Front
-                </h4>
-
-                <pre>
-                  <code>
-                    Back
-                  </code>
-                </pre>
-
-              </td>
+              <th>Action</th>
+              <th>Card</th>
             </tr>
+          </thead>
+          <tbody>
+            {(this.props.cards.length > 0)
+              ? this.props.cards.map((value, index) => this.renderRow(value))
+              : null
+            }
           </tbody>
         </table>
       </div>

@@ -3,7 +3,7 @@ import {
   FETCH_CARDS_TYPE
 } from '../constants/actionTypes'
 
-const card = (state = initialState, action) => {
+const cards = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CARDS_TYPE:
       return action.payload.cards
@@ -12,4 +12,4 @@ const card = (state = initialState, action) => {
   }
 }
 
-export default card
+export default cards
