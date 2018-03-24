@@ -21,9 +21,9 @@ const Login = () => (
             <label>Enter Password </label>
             <input type='password' className='form-control' />
             <hr />
-            <a href='#' className='btn btn-success'>Let Me Login ! </a>
+            <a href='' className='btn btn-success'>Let Me Login ! </a>
             <hr />
-            Please fill all above fields carefully to login . New here ? than move <a href='#'>here</a>
+            Please fill all above fields carefully to login . New here ? than move <a href=''>here</a>
           </div>
         </div>
       </div>
