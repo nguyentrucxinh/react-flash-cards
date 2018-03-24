@@ -12,6 +12,7 @@ const receiveCards = card => ({
 export const deleteCard = (id) => dispatch => {
   axios.delete(`${HOST_API}${DELETE_CARD}/${id}`)
     .then(response => response.data.content)
+    // Not return card
     .then(card => {
       dispatch(receiveCards(card))
     })

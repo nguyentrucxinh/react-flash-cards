@@ -5,6 +5,37 @@ class Memorize extends Component {
   constructor (props) {
     super(props)
     this.props.onGetCardRandom()
+
+    this.handleButtonNextCard = this.handleButtonNextCard.bind(this)
+    this.handleButtonKnown = this.handleButtonKnown.bind(this)
+  }
+
+  handleButtonNextCard (e) {
+    e.preventDefault()
+    this.props.onGetCardRandom()
+  }
+
+  handleButtonKnown (e) {
+    e.preventDefault()
+    this.props.onUpdateCard(this.props.card._id, { known: true })
+  }
+
+  renderBack () {
+    if (this.props.card.type === 1) {
+      return (
+        <div className='text-center largerText'>
+          {this.props.card.back}
+        </div>
+      )
+    } else {
+      return (
+        <pre>
+          <code>
+            {this.props.card.back}
+          </code>
+        </pre>
+      )
+    }
   }
 
   render () {
@@ -15,11 +46,11 @@ class Memorize extends Component {
         <div className='row'>
           <div className='col-xs-12 text-center'>
             <div className='btn-group btn-group-lg' role='group' aria-label='card type'>
-              <a href='general' className='btn btn-primary'>General</a>
-              <a href='code' className='btn btn-default'>Code</a>
+              <a className={'btn btn-' + (this.props.card.type === 1 ? 'primary' : 'default')}>General</a>
+              <a className={'btn btn-' + (this.props.card.type === 2 ? 'primary' : 'default')}>Code</a>
             </div>
           </div>
-        </div>
+        </div >
 
         <hr />
 
@@ -40,15 +71,7 @@ class Memorize extends Component {
                 <div className='alignContainer'>
                   <div className='alignMiddle frontText'>
 
-                    <div className='text-center largerText'>
-                      {this.props.card.back}
-                    </div>
-
-                    <pre>
-                      <code>
-                        {this.props.card.back}
-                      </code>
-                    </pre>
+                    {this.renderBack()}
 
                   </div>
                 </div>
@@ -60,38 +83,26 @@ class Memorize extends Component {
         {/* Buttons */}
         <div className='row'>
           <div className='col-xs-12 text-center'>
-            <a href='' className='btn btn-primary btn-lg flipCard'>
+            <a className='btn btn-primary btn-lg flipCard'>
               <i className='fa fa-exchange' />
               Flip Card
             </a>
             &nbsp;
             &nbsp;
-            <a href='mark_known' className='btn btn-success btn-lg'>
+            <a onClick={this.handleButtonKnown} className='btn btn-success btn-lg'>
               <i className='fa fa-check' />
               I Know It
             </a>
             &nbsp;
             &nbsp;
-            <a href='card_type' className='btn btn-primary btn-lg'>
+            <a onClick={this.handleButtonNextCard} className='btn btn-primary btn-lg'>
               Next Card
               <i className='fa fa-arrow-right' />
             </a>
           </div>
         </div>
 
-        {/* Bookmark */}
-        <div className='row'>
-          <div className='col-xs-12 text-center'>
-            <br />
-            <br />
-            <br />
-            <a href='' className='btn btn-default btn-sm'>
-              <i className='fa fa-bookmark' />
-              bookmark this card (# card.id )
-            </a>
-          </div>
-        </div>
-      </div>
+      </div >
     )
   }
 }

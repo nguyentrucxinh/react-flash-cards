@@ -12,6 +12,7 @@ const receiveCards = card => ({
 export const updateCard = (id, data) => dispatch => {
   axios.put(`${HOST_API}${UPDATE_CARD}/${id}`, data)
     .then(response => response.data.content)
+    // Not return card
     .then(card => {
       dispatch(receiveCards(card))
     })

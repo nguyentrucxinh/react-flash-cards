@@ -10,10 +10,9 @@ import {
 const card = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CARD_TYPE:
-      return action.payload.card
     case FETCH_CARD_RANDOM_TYPE:
-      return action.payload.card
     case CREATE_CARD_TYPE:
+      return action.payload.card
     case UPDATE_CARD_TYPE:
     case DELETE_CARD_TYPE:
     default:
