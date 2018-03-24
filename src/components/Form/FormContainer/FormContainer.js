@@ -1,4 +1,4 @@
-import List from './List/List'
+import Form from './Form/Form'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,9 +9,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 })
 
-const ListContainer = connect(
+const FormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(List)
+)(Form)
 
-export default ListContainer
+export default FormContainer
