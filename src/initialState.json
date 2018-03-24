@@ -14,5 +14,12 @@
             "back": "Back 2",
             "known": false
         }
-    ]
+    ],
+    "card": {
+        "id": 2,
+        "type": false,
+        "front": "Front 2",
+        "back": "Back 2",
+        "known": false
+    }
 }

@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 
 class Memorize extends Component {
+  constructor (props) {
+    super(props)
+    this.props.onGetCardRandom()
+  }
+
   render () {
     return (
       <div>
@@ -25,7 +30,7 @@ class Memorize extends Component {
               <div className='panel-body'>
                 <div className='alignContainer'>
                   <div className='alignMiddle frontText'>
-                    <h3 className='text-center'>card.front</h3>
+                    <h3 className='text-center'>{this.props.card.front}</h3>
                   </div>
                 </div>
               </div>
@@ -36,12 +41,12 @@ class Memorize extends Component {
                   <div className='alignMiddle frontText'>
 
                     <div className='text-center largerText'>
-                      card.back
+                      {this.props.card.back}
                     </div>
 
                     <pre>
                       <code>
-                        card.back
+                        {this.props.card.back}
                       </code>
                     </pre>
 
