@@ -13,6 +13,7 @@ const Nav = () => (
         <li><Link to='/list'>List</Link></li>
         <li><Link to='/form'>Add/Edit</Link></li>
         <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        <li><Link to='/signup'>Sign up</Link></li>
         <li><Link to='/logout'>Log out</Link></li>
 
       </ul>

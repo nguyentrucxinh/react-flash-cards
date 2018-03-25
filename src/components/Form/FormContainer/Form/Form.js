@@ -14,7 +14,7 @@ class Form extends Component {
           {/* Card Type */}
           <div className='form-group'>
             <label htmlFor='general' className='btn btn-default btn-lg'>General &nbsp;
-                <input type='radio' name='type' value='1' id='general' checked />
+                <input type='radio' name='type' value='1' id='general' defaultChecked />
             </label>
             <label htmlFor='code' className='btn btn-default btn-lg'>Code &nbsp;
                 <input type='radio' name='type' value='2' id='code' />
@@ -24,21 +24,17 @@ class Form extends Component {
           {/* Card */}
           <div className='form-group'>
             <label htmlFor='front'>Front of Card</label>
-            <input type='text' name='front' id='front' className='form-control' value='card.front' />
+            <input type='text' name='front' id='front' className='form-control' />
           </div>
           <div className='form-group'>
             <label htmlFor='back'>Back of Card</label>
-            <textarea name='back'
-              className='form-control'
-              id='back'
-              placeholder='back of card'
-              rows='12'>card.back</textarea>
+            <textarea name='back' className='form-control' id='back' rows='12' />
           </div>
           <div className='row'>
             <div className='col-xs-6'>
               <div className='checkbox'>
                 <label>
-                  <input type='checkbox' name='known' value='1' /> Known
+                  <input type='checkbox' name='known' /> Known
                   </label>
               </div>
             </div>
@@ -54,7 +50,6 @@ class Form extends Component {
 
           {/* Button */}
           <div className='form-group'>
-            <input type='hidden' name='card_id' value='card.id' />
             <button type='submit' className='saveButton btn btn-lg btn-primary'>Save</button>
           </div>
 
