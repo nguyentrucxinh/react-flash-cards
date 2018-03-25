@@ -11,6 +11,7 @@ class Memorize extends Component {
     }
 
     this.handleButtonNextCard = this.handleButtonNextCard.bind(this)
+    this.handleButtonRandomCard = this.handleButtonRandomCard.bind(this)
     this.handleButtonKnown = this.handleButtonKnown.bind(this)
     this.handleButtonFlipCard = this.handleButtonFlipCard.bind(this)
   }
@@ -18,8 +19,15 @@ class Memorize extends Component {
   handleButtonNextCard (e) {
     e.preventDefault()
 
-    // Back to front card
-    this.setState({ isFront: true })
+    this.backToFrontCard()
+
+    this.props.onGetCardNext(this.props.card._id)
+  }
+
+  handleButtonRandomCard (e) {
+    e.preventDefault()
+
+    this.backToFrontCard()
 
     this.props.onGetCardRandom()
   }
@@ -32,6 +40,10 @@ class Memorize extends Component {
   handleButtonFlipCard (e) {
     e.preventDefault()
     this.setState({ isFront: !this.state.isFront })
+  }
+
+  backToFrontCard () {
+    this.setState({ isFront: true })
   }
 
   renderContent () {
@@ -108,6 +120,12 @@ class Memorize extends Component {
             </a>
             &nbsp;
             &nbsp;
+            <a onClick={this.handleButtonRandomCard} className='btn btn-primary btn-lg'>
+              Random Card
+              <i className='fa fa-random' />
+            </a>
+            &nbsp;
+            &nbsp;
             <a onClick={this.handleButtonNextCard} className='btn btn-primary btn-lg'>
               Next Card
               <i className='fa fa-arrow-right' />
@@ -123,13 +141,7 @@ class Memorize extends Component {
 Memorize.propTypes = {
   onGetCardRandom: PropTypes.func.isRequired,
   onUpdateCard: PropTypes.func.isRequired,
-  card: PropTypes.PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    type: PropTypes.number.isRequired,
-    front: PropTypes.string.isRequired,
-    back: PropTypes.string.isRequired,
-    known: PropTypes.bool.isRequired
-  }).isRequired
+  card: PropTypes.object.isRequired
 }
 
 export default Memorize

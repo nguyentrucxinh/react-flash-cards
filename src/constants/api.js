@@ -1,6 +1,7 @@
 export const HOST_API = 'http://localhost:3000'
 export const GET_CARDS = '/api/cards'
 export const GET_CARD = '/api/cards'
+export const GET_CARD_NEXT = '/api/cards/next'
 export const GET_CARD_RAMDOM = '/api/cards/random'
 export const CREATE_CARD = '/api/cards'
 export const UPDATE_CARD = '/api/cards'
