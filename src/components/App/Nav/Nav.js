@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Nav = () => (
   <nav className='navbar navbar-default'>
     <div className='navbar-header'>
-      <a className='navbar-brand' href='../index.html'>CS Flash Cards</a>
+      <Link to='/' className='navbar-brand'>Flash Cards</Link>
 
       <ul className='nav navbar-nav navbar-right'>
 
