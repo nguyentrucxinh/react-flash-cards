@@ -77,10 +77,7 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {(Array.isArray(cards))
-              ? cards.map((value, index) => this.renderRow(value))
-              : null
-            }
+            {cards.map((value, index) => this.renderRow(value))}
           </tbody>
         </table>
 
