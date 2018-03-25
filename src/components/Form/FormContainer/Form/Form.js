@@ -10,20 +10,19 @@ class Form extends Component {
   constructor (props) {
     super(props)
 
-    if (this.isCreate()) {
-      this.state = {
-        card: {
-          type: TYPE.general,
-          front: '',
-          back: '',
-          known: false
-        }
+    // Set default state
+    this.state = {
+      card: {
+        type: TYPE.general,
+        front: '',
+        back: '',
+        known: false
       }
-    } else {
+    }
+
+    // Get card if is update mode
+    if (!this.isCreate()) {
       this.props.onGetCard(this.props.mode)
-      this.state = {
-        card: this.props.card
-      }
     }
 
     this.handleButtonSubmit = this.handleButtonSubmit.bind(this)
@@ -32,6 +31,10 @@ class Form extends Component {
     this.handleChangeFront = this.handleChangeFront.bind(this)
     this.handleChangeBack = this.handleChangeBack.bind(this)
     this.handleChangeKnown = this.handleChangeKnown.bind(this)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({ card: nextProps.card })
   }
 
   isCreate () {
