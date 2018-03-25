@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 const TYPE = {
   general: 1,
@@ -20,6 +20,7 @@ class Form extends Component {
     }
 
     this.handleButtonSubmit = this.handleButtonSubmit.bind(this)
+    this.handButtonDeleteCard = this.handButtonDeleteCard.bind(this)
     this.handleChangeType = this.handleChangeType.bind(this)
     this.handleChangeFront = this.handleChangeFront.bind(this)
     this.handleChangeBack = this.handleChangeBack.bind(this)
@@ -28,12 +29,16 @@ class Form extends Component {
 
   handleButtonSubmit (e) {
     e.preventDefault()
-    console.log(this.state.card)
     if (this.props.mode === 'create') {
-
+      this.props.onCreateCard(this.state.card)
     } else {
-
+      // this.props.onUpdateCard(id, this.state.card)
     }
+  }
+
+  handButtonDeleteCard (e) {
+    e.preventDefault()
+    // this.props.onDeleteCard(id)
   }
 
   handleChangeType (e) {
@@ -91,7 +96,7 @@ class Form extends Component {
               </div>
             </div>
             <div className='col-xs-6 text-right'>
-              <a href='delete' className='btn btn-danger btn-xs'>
+              <a onChange={this.handButtonDeleteCard} className='btn btn-danger btn-xs'>
                 <i className='fa fa-trash' />
                 Remove
                 </a>
@@ -109,6 +114,12 @@ class Form extends Component {
       </div>
     )
   }
+}
+
+Form.propTypes = {
+  onCreateCard: PropTypes.func.isRequired,
+  onUpdateCard: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired
 }
 
 export default Form

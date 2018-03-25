@@ -2,7 +2,7 @@ import axios from 'axios'
 import { DELETE_CARD_TYPE } from '../constants/actionTypes'
 import { HOST_API, DELETE_CARD } from '../constants/api'
 
-const receiveCards = card => ({
+const receiveCard = card => ({
   type: DELETE_CARD_TYPE,
   payload: {
     card
@@ -14,7 +14,7 @@ export const deleteCard = (id) => dispatch => {
     .then(response => response.data.content)
     // Not return card
     .then(card => {
-      dispatch(receiveCards(card))
+      dispatch(receiveCard(card))
     })
     .catch(error => {
       throw new Error(error)
