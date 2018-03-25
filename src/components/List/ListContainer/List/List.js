@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
 class List extends Component {
   constructor (props) {
     super(props)
     this.props.onGetCards()
 
-    this.handleButtonEdit = this.handleButtonEdit.bind(this)
     this.handleButtonDelete = this.handleButtonDelete.bind(this)
-  }
-
-  handleButtonEdit (id) {
-    // withRouter.push(/form/id)
   }
 
   handleButtonDelete (id) {
@@ -22,9 +18,7 @@ class List extends Component {
     return (
       <tr key={card._id}>
         <td className='col-md-1'>
-          <a onClick={() => this.handleButtonEdit(card._id)} className='btn btn-xs btn-primary'>
-            <i className='fa fa-pencil' aria-hidden='true' /> Edit
-          </a>
+          <EditButton id={card._id} />
           <br />
           <a onClick={() => this.handleButtonDelete(card._id)} className='btn btn-xs btn-danger'>
             <i className='fa fa-trash' aria-hidden='true' /> Delete
@@ -90,5 +84,16 @@ List.propTypes = {
   onGetCards: PropTypes.func.isRequired,
   cards: PropTypes.array.isRequired
 }
+
+// Redirect
+const EditButton = withRouter(
+  ({ history, id }) =>
+    <a onClick={() => {
+      // Some logic here
+      history.push(`/form/${id}`)
+    }} className='btn btn-xs btn-primary'>
+      <i className='fa fa-pencil' aria-hidden='true' /> Edit
+    </a>
+)
 
 export default List

@@ -13,7 +13,7 @@ class Form extends Component {
     if (this.isCreate()) {
       this.state = {
         card: {
-          type: 1,
+          type: TYPE.general,
           front: '',
           back: '',
           known: false
