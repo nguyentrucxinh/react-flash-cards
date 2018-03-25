@@ -2,9 +2,7 @@ import React from 'react'
 import ListContainer from './ListContainer/ListContainer'
 
 const List = () => (
-  <div>
-    <ListContainer />
-  </div>
+  <ListContainer />
 )
 
 export default List
