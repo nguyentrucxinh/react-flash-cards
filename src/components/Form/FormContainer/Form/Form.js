@@ -10,12 +10,19 @@ class Form extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      card: {
-        type: 1,
-        front: '',
-        back: '',
-        known: false
+    if (this.isCreate()) {
+      this.state = {
+        card: {
+          type: 1,
+          front: '',
+          back: '',
+          known: false
+        }
+      }
+    } else {
+      this.props.onGetCard(this.props.mode)
+      this.state = {
+        card: this.props.card
       }
     }
 
@@ -27,18 +34,22 @@ class Form extends Component {
     this.handleChangeKnown = this.handleChangeKnown.bind(this)
   }
 
+  isCreate () {
+    return this.props.mode === 'create'
+  }
+
   handleButtonSubmit (e) {
     e.preventDefault()
-    if (this.props.mode === 'create') {
+    if (this.isCreate()) {
       this.props.onCreateCard(this.state.card)
     } else {
-      // this.props.onUpdateCard(id, this.state.card)
+      this.props.onUpdateCard(this.props.card._id, this.state.card)
     }
   }
 
   handButtonDeleteCard (e) {
     e.preventDefault()
-    // this.props.onDeleteCard(id)
+    this.props.onDeleteCard(this.props.card._id)
   }
 
   handleChangeType (e) {
@@ -117,9 +128,11 @@ class Form extends Component {
 }
 
 Form.propTypes = {
+  card: PropTypes.object.isRequired,
   onCreateCard: PropTypes.func.isRequired,
   onUpdateCard: PropTypes.func.isRequired,
-  onDeleteCard: PropTypes.func.isRequired
+  onDeleteCard: PropTypes.func.isRequired,
+  onGetCard: PropTypes.func.isRequired
 }
 
 export default Form

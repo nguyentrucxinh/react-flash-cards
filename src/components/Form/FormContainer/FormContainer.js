@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { createCard } from '../../../actions/createCardAction'
 import { deleteCard } from '../../../actions/deleteCardAction'
 import { updateCard } from '../../../actions/updateCardAction'
+import { getCard } from '../../../actions/getCardAction'
 
 const mapStateToProps = (state, ownProps) => ({
-
+  card: state.card
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   onDeleteCard: (id) => {
     dispatch(deleteCard(id))
+  },
+  onGetCard: (id) => {
+    dispatch(getCard(id))
   }
 })
 
