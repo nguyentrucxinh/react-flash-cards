@@ -1,5 +1,11 @@
 {
     "cards": [],
-    "card": null,
-    "message": "default message"
+    "card": {
+        "_id": "",
+        "type": 1,
+        "front": "",
+        "back": "",
+        "known": false
+    },
+    "message": ""
 }

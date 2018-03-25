@@ -8,7 +8,7 @@ import {
   FETCH_CARD_RANDOM_TYPE
 } from '../constants/actionTypes'
 
-const card = (state = initialState, action) => {
+const cardReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CARD_TYPE:
     case FETCH_CARD_NEXT_TYPE:
@@ -18,8 +18,8 @@ const card = (state = initialState, action) => {
     case UPDATE_CARD_TYPE:
     case DELETE_CARD_TYPE:
     default:
-      return { ...state }
+      return state
   }
 }
 
-export default card
+export default cardReducer

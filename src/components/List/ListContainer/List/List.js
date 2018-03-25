@@ -89,8 +89,8 @@ class List extends Component {
 }
 
 List.propTypes = {
-  onGetCards: PropTypes.func.isRequired
-  // cards: PropTypes.array.isRequired
+  onGetCards: PropTypes.func.isRequired,
+  cards: PropTypes.array.isRequired
 }
 
 export default List

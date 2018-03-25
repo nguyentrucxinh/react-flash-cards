@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import cards from './cards'
-import card from './card'
-import message from './message'
+import cardsReducer from './cardsReducer'
+import cardReducer from './cardReducer'
+import messageReducer from './messageReducer'
 
 const rootReducer = combineReducers({
-  cards,
-  card,
-  message
+  cards: cardsReducer,
+  card: cardReducer,
+  message: messageReducer
 })
 
 export default rootReducer

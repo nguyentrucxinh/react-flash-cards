@@ -141,7 +141,13 @@ class Memorize extends Component {
 Memorize.propTypes = {
   onGetCardRandom: PropTypes.func.isRequired,
   onUpdateCard: PropTypes.func.isRequired,
-  card: PropTypes.object.isRequired
+  card: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    type: PropTypes.number.isRequired,
+    front: PropTypes.string.isRequired,
+    back: PropTypes.string.isRequired,
+    known: PropTypes.bool.isRequired
+  }).isRequired
 }
 
 export default Memorize
