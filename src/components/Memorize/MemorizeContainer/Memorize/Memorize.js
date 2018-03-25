@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class Memorize extends Component {
   constructor (props) {
     super(props)
-    this.props.onGetCardRandom()
+    this.props.onGetCardFirst()
 
     this.state = {
       isFront: true
