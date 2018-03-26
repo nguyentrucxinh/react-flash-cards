@@ -1,4 +1,3 @@
-export const HOST_API = process.env.REACT_APP_HOST_API
 export const GET_CARDS = '/api/cards'
 export const GET_CARD = '/api/cards'
 export const GET_CARD_NEXT = '/api/cards/next'

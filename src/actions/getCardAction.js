@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { FETCH_CARD_TYPE } from '../constants/actionTypes'
-import { HOST_API, GET_CARD } from '../constants/api'
+import { GET_CARD } from '../constants/api'
 
 const receiveCard = card => ({
   type: FETCH_CARD_TYPE,
@@ -10,7 +10,7 @@ const receiveCard = card => ({
 })
 
 export const getCard = (id) => dispatch => {
-  axios.get(`${HOST_API}${GET_CARD}/${id}`)
+  axios.get(`${process.env.REACT_APP_HOST_API}${GET_CARD}/${id}`)
     .then(response => response.data.content)
     .then(card => {
       dispatch(receiveCard(card))

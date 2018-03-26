@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { CREATE_CARD_TYPE } from '../constants/actionTypes'
-import { HOST_API, CREATE_CARD } from '../constants/api'
+import { CREATE_CARD } from '../constants/api'
 
 const receiveCard = card => ({
   type: CREATE_CARD_TYPE,
@@ -10,7 +10,7 @@ const receiveCard = card => ({
 })
 
 export const createCard = (data) => dispatch => {
-  axios.post(`${HOST_API}${CREATE_CARD}`, data)
+  axios.post(`${process.env.REACT_APP_HOST_API}${CREATE_CARD}`, data)
     .then(response => response.data.content)
     .then(card => {
       dispatch(receiveCard(card))

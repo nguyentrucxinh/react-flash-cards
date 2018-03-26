@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { FETCH_CARD_RANDOM_TYPE, TOGGLE_MESSAGE_TYPE } from '../constants/actionTypes'
-import { HOST_API, GET_CARD_RAMDOM } from '../constants/api'
+import { GET_CARD_RAMDOM } from '../constants/api'
 
 const receiveCard = card => ({
   type: FETCH_CARD_RANDOM_TYPE,
@@ -17,7 +17,7 @@ const receiveMessage = message => ({
 })
 
 export const getCardRandom = (id) => dispatch => {
-  axios.get(`${HOST_API}${GET_CARD_RAMDOM}`)
+  axios.get(`${process.env.REACT_APP_HOST_API}${GET_CARD_RAMDOM}`)
     .then(response => response.data.content)
     .then(card => {
       if (card) {
