@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Highlight from 'react-highlight'
 
 class Memorize extends Component {
   constructor (props) {
@@ -61,11 +62,9 @@ class Memorize extends Component {
       )
     } else {
       return (
-        <pre>
-          <code>
-            {this.props.card.back}
-          </code>
-        </pre>
+        <Highlight className='javascript'>
+          {this.props.card.back}
+        </Highlight>
       )
     }
   }
