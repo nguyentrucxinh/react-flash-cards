@@ -2,6 +2,11 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+# SCREENSHOTS
+
+
+![Overview](https://raw.githubusercontent.com/nguyentrucxinh/react-flash-cards/master/screenshots/overview.gif)
+
 # STACK
 
 - [React (View layer)](https://reactjs.org/)
