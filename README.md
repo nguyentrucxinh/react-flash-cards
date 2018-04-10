@@ -4,7 +4,6 @@
 
 # SCREENSHOTS
 
-
 ![Overview](https://raw.githubusercontent.com/nguyentrucxinh/react-flash-cards/master/screenshots/overview.gif)
 
 # STACK
