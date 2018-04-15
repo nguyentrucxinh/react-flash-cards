@@ -1,6 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Highlight from 'react-highlight'
+import Markdown from 'react-remarkable'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/gruvbox-light.css'
+
+const highlight = (str, lang) => {
+  if (lang && hljs.getLanguage(lang)) {
+    try {
+      return hljs.highlight(lang, str).value
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  try {
+    return hljs.highlightAuto(str).value
+  } catch (err) {
+    console.error(err)
+  }
+
+  return ''
+}
 
 class Memorize extends Component {
   constructor (props) {
@@ -50,21 +70,23 @@ class Memorize extends Component {
   renderContent () {
     // Front
     if (this.state.isFront) {
-      return <h3 className='text-center'>{this.props.card.front}</h3>
+      return (
+        <div className='text-center'>
+          <Markdown options={{ highlight }}>{this.props.card.front}</Markdown>
+        </div>
+      )
     }
 
     // Back
     if (this.props.card.type === 1) {
       return (
-        <div className='text-center largerText'>
-          {this.props.card.back}
+        <div className='text-center'>
+          <Markdown options={{ highlight }}>{this.props.card.back}</Markdown>
         </div>
       )
     } else {
       return (
-        <Highlight className='javascript'>
-          {this.props.card.back}
-        </Highlight>
+        <Markdown options={{ highlight }}>{this.props.card.back}</Markdown>
       )
     }
   }
