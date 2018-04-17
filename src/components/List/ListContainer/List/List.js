@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
+import Markdown from 'react-remarkable'
+import highlight from '../../../highlight'
 
 class List extends Component {
   constructor (props) {
@@ -25,15 +27,9 @@ class List extends Component {
           </a>
         </td>
         <td className='cardContent col-md-11'>
-          <h4>
-            {card.front}
-          </h4>
+          <Markdown options={{ highlight }}>{card.front}</Markdown>
 
-          <pre>
-            <code>
-              {card.back}
-            </code>
-          </pre>
+          <Markdown options={{ highlight }}>{card.back}</Markdown>
 
         </td>
       </tr>

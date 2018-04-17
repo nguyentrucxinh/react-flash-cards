@@ -1,26 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Markdown from 'react-remarkable'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/gruvbox-light.css'
-
-const highlight = (str, lang) => {
-  if (lang && hljs.getLanguage(lang)) {
-    try {
-      return hljs.highlight(lang, str).value
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  try {
-    return hljs.highlightAuto(str).value
-  } catch (err) {
-    console.error(err)
-  }
-
-  return ''
-}
+import highlight from '../../../highlight'
 
 class Memorize extends Component {
   constructor (props) {
