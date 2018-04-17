@@ -92,7 +92,7 @@ class Memorize extends Component {
 
         {/* Card */}
         <div className='row memorizePanel'>
-          <div className='col-xs-8 col-xs-offset-2'>
+          <div className='col-md-8 col-md-offset-2 col-xs-12'>
 
             <div className='panel panel-default cardFront'>
               <div className={'panel-body ' + (this.state.isFront ? '' : 'bg-info')}>
