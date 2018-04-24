@@ -25,7 +25,7 @@ class Form extends Component {
     }
 
     this.handleButtonSubmit = this.handleButtonSubmit.bind(this)
-    this.handleButtonDeleteCard = this.handleButtonDeleteCard.bind(this)
+    this.handleButtonDelete = this.handleButtonDelete.bind(this)
     this.handleChangeType = this.handleChangeType.bind(this)
     this.handleChangeFront = this.handleChangeFront.bind(this)
     this.handleChangeBack = this.handleChangeBack.bind(this)
@@ -57,7 +57,7 @@ class Form extends Component {
     }
   }
 
-  handleButtonDeleteCard () {
+  handleButtonDelete () {
     this.props.onDeleteCard(this.props.card._id)
   }
 
@@ -121,7 +121,7 @@ class Form extends Component {
             <div className='col-xs-6 text-right'>
               {this.isCreate() ? ''
                 : (
-                  <RemoveButton id={this.state.card._id} handleButtonDeleteCard={this.handleButtonDeleteCard} />
+                  <RemoveButton id={this.state.card._id} handleButtonDelete={this.handleButtonDelete} />
                 )}
             </div>
           </div>
@@ -148,9 +148,9 @@ Form.propTypes = {
 }
 
 const RemoveButton = withRouter(
-  ({ history, id, handleButtonDeleteCard }) =>
+  ({ history, id, handleButtonDelete }) =>
     <a onClick={() => {
-      handleButtonDeleteCard()
+      handleButtonDelete()
       history.push(`/list`)
     }} className='btn btn-danger btn-xs'>
       <i className='fa fa-trash' aria-hidden='true' /> Remove
