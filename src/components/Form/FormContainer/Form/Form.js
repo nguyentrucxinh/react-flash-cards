@@ -44,6 +44,7 @@ class Form extends Component {
   handleButtonSubmit (e) {
     e.preventDefault()
     if (this.isCreate()) {
+      // this.setState({ card: { _id: null } })
       this.props.onCreateCard(this.state.card)
     } else {
       this.props.onUpdateCard(this.props.card._id, this.state.card)
