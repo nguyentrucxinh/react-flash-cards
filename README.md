@@ -2,6 +2,10 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+# SCREENSHOTS
+
+![Overview](screenshots/overview.gif)
+
 # STACK
 
 - [React (View layer)](https://reactjs.org/)
