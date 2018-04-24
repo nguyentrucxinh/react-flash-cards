@@ -97,7 +97,7 @@ class Memorize extends Component {
             </a>
             &nbsp;
             &nbsp;
-            <a onClick={this.handleButtonFlipCard} className='btn btn-primary btn-lg flipCard'>
+            <a onClick={this.handleButtonFlipCard} className='btn btn-default btn-lg flipCard'>
               <i className='fa fa-exchange' />
               Flip Card
             </a>
@@ -131,9 +131,9 @@ class Memorize extends Component {
         <div className='row'>
           <div className='col-xs-12 text-center'>
             <div className='btn-group btn-group-lg' role='group' aria-label='card type'>
-              <a className={'btn btn-' + (card.type === CARD_TYPE.title ? 'primary' : 'default')}>Title</a>
-              <a className={'btn btn-' + (card.type === CARD_TYPE.general ? 'primary' : 'default')}>General</a>
-              <a className={'btn btn-' + (card.type === CARD_TYPE.code ? 'primary' : 'default')}>Code</a>
+              <a className={'btn btn-' + (card.type === CARD_TYPE.title ? 'info' : 'default')}>Title</a>
+              <a className={'btn btn-' + (card.type === CARD_TYPE.general ? 'info' : 'default')}>General</a>
+              <a className={'btn btn-' + (card.type === CARD_TYPE.code ? 'info' : 'default')}>Code</a>
             </div>
           </div>
         </div >
