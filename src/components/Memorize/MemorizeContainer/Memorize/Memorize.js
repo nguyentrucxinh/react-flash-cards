@@ -112,6 +112,7 @@ class Memorize extends Component {
 
         <div className='row'>
           <div className='col-xs-12 text-center'>
+            <br />
             <a onClick={this.handleButtonRandomCard} className='btn btn-primary btn-lg'>
               Random Card
               <i className='fa fa-random' />
