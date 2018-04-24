@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCreateCard: (data) => {
     dispatch(createCard(data))
+    // dispatch(createCard(data)).then()
   },
   onUpdateCard: (id, data) => {
     dispatch(updateCard(id, data))
