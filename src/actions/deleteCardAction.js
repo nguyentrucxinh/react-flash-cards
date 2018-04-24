@@ -9,14 +9,10 @@ const receiveCard = card => ({
   }
 })
 
-export const deleteCard = (id) => dispatch => {
+export const deleteCard = (id) => dispatch =>
   axios.delete(`${process.env.REACT_APP_HOST_API}${DELETE_CARD}/${id}`)
     .then(response => response.data.content)
-    // Not return card
-    .then(card => {
-      dispatch(receiveCard(card))
-    })
+    .then(card => dispatch(receiveCard(card)))
     .catch(error => {
       throw new Error(error)
     })
-}

@@ -12,7 +12,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(getCards())
   },
   onDeleteCard: (id) => {
-    dispatch(deleteCard(id))
+    return dispatch(deleteCard(id))
+      .then(() => dispatch(getCards()))
+      .catch(error => {
+        throw new Error(error)
+      })
   }
 })
 

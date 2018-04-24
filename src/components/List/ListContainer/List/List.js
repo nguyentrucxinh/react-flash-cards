@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Markdown from 'react-remarkable'
 import highlight from '../../../highlight'
 
@@ -20,7 +20,11 @@ class List extends Component {
     return (
       <tr key={card._id}>
         <td className='col-md-1'>
-          <EditButton id={card._id} />
+
+          <Link to={'/form/' + card._id} className='btn btn-xs btn-primary'>
+            <i className='fa fa-pencil' aria-hidden='true' /> Edit
+          </Link>
+
           <br />
           <a onClick={() => this.handleButtonDelete(card._id)} className='btn btn-xs btn-danger'>
             <i className='fa fa-trash' aria-hidden='true' /> Delete
@@ -80,16 +84,5 @@ List.propTypes = {
   onGetCards: PropTypes.func.isRequired,
   cards: PropTypes.array.isRequired
 }
-
-// Redirect
-const EditButton = withRouter(
-  ({ history, id }) =>
-    <a onClick={() => {
-      // Some logic here
-      history.push(`/form/${id}`)
-    }} className='btn btn-xs btn-primary'>
-      <i className='fa fa-pencil' aria-hidden='true' /> Edit
-    </a>
-)
 
 export default List
