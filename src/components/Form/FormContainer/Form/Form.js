@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-
-const TYPE = {
-  title: 0,
-  general: 1,
-  code: 2
-}
+import { CARD_TYPE } from '../../../../constants/cardTypes'
 
 const DEFAULT_CARD = {
-  type: TYPE.general,
+  type: CARD_TYPE.general,
   front: '',
   back: '',
   known: false
@@ -30,7 +25,7 @@ class Form extends Component {
     }
 
     this.handleButtonSubmit = this.handleButtonSubmit.bind(this)
-    this.handButtonDeleteCard = this.handButtonDeleteCard.bind(this)
+    this.handleButtonDeleteCard = this.handleButtonDeleteCard.bind(this)
     this.handleChangeType = this.handleChangeType.bind(this)
     this.handleChangeFront = this.handleChangeFront.bind(this)
     this.handleChangeBack = this.handleChangeBack.bind(this)
@@ -62,8 +57,7 @@ class Form extends Component {
     }
   }
 
-  handButtonDeleteCard (e) {
-    e.preventDefault()
+  handleButtonDeleteCard () {
     this.props.onDeleteCard(this.props.card._id)
   }
 
@@ -97,13 +91,13 @@ class Form extends Component {
           {/* Card Type */}
           <div className='form-group'>
             <label htmlFor='title' className='btn btn-default btn-lg'>Title &nbsp;
-                <input value={TYPE.title} onChange={this.handleChangeType} checked={Number(this.state.card.type) === TYPE.title} type='radio' name='type' id='title' />
+                <input value={CARD_TYPE.title} onChange={this.handleChangeType} checked={Number(this.state.card.type) === CARD_TYPE.title} type='radio' name='type' id='title' />
             </label>
             <label htmlFor='general' className='btn btn-default btn-lg'>General &nbsp;
-                <input value={TYPE.general} onChange={this.handleChangeType} checked={Number(this.state.card.type) === TYPE.general} type='radio' name='type' id='general' />
+                <input value={CARD_TYPE.general} onChange={this.handleChangeType} checked={Number(this.state.card.type) === CARD_TYPE.general} type='radio' name='type' id='general' />
             </label>
             <label htmlFor='code' className='btn btn-default btn-lg'>Code &nbsp;
-                <input value={TYPE.code} onChange={this.handleChangeType} checked={Number(this.state.card.type) === TYPE.code} type='radio' name='type' id='code' />
+                <input value={CARD_TYPE.code} onChange={this.handleChangeType} checked={Number(this.state.card.type) === CARD_TYPE.code} type='radio' name='type' id='code' />
             </label>
           </div>
 
@@ -127,7 +121,7 @@ class Form extends Component {
             <div className='col-xs-6 text-right'>
               {this.isCreate() ? ''
                 : (
-                  <RemoveButton id={this.state.card._id} handButtonDeleteCard={this.handButtonDeleteCard} />
+                  <RemoveButton id={this.state.card._id} handleButtonDeleteCard={this.handleButtonDeleteCard} />
                 )}
             </div>
           </div>
@@ -154,9 +148,9 @@ Form.propTypes = {
 }
 
 const RemoveButton = withRouter(
-  ({ history, id, handButtonDeleteCard }) =>
+  ({ history, id, handleButtonDeleteCard }) =>
     <a onClick={() => {
-      handButtonDeleteCard()
+      handleButtonDeleteCard()
       history.push(`/list`)
     }} className='btn btn-danger btn-xs'>
       <i className='fa fa-trash' aria-hidden='true' /> Remove
