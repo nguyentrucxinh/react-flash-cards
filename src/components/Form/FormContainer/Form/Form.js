@@ -8,18 +8,20 @@ const TYPE = {
   code: 2
 }
 
+const DEFAULT_CARD = {
+  type: TYPE.general,
+  front: '',
+  back: '',
+  known: false
+}
+
 class Form extends Component {
   constructor (props) {
     super(props)
 
     // Set default state
     this.state = {
-      card: {
-        type: TYPE.general,
-        front: '',
-        back: '',
-        known: false
-      }
+      card: DEFAULT_CARD
     }
 
     // Get card if is update mode
@@ -46,9 +48,15 @@ class Form extends Component {
   handleButtonSubmit (e) {
     e.preventDefault()
     if (this.isCreate()) {
-      // this.setState({ card: { _id: null } })
       this.props.onCreateCard(this.state.card)
-      // this.setState({ card: { _id: null, front: '', back: '' } })
+        .then(() => {
+          this.setState({
+            card: DEFAULT_CARD
+          })
+        })
+        .catch(error => {
+          throw new Error(error)
+        })
     } else {
       this.props.onUpdateCard(this.props.card._id, this.state.card)
     }
@@ -57,7 +65,6 @@ class Form extends Component {
   handButtonDeleteCard (e) {
     e.preventDefault()
     this.props.onDeleteCard(this.props.card._id)
-    // redirect to /list
   }
 
   handleChangeType (e) {
@@ -118,10 +125,9 @@ class Form extends Component {
               </div>
             </div>
             <div className='col-xs-6 text-right'>
-               {this.isCreate() ? (
-                  <div></div>
-                ) : (
-                  <RemoveButton id={card._id} handButtonDeleteCard={this.handButtonDeleteCard} />
+              {this.isCreate() ? ''
+                : (
+                  <RemoveButton id={this.state.card._id} handButtonDeleteCard={this.handButtonDeleteCard} />
                 )}
             </div>
           </div>
