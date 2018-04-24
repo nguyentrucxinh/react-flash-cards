@@ -59,27 +59,9 @@ class Memorize extends Component {
   }
 
   renderContent () {
-    // Front
-    if (this.state.isFront) {
-      return (
-        <div className='text-center'>
-          <Markdown options={{ highlight }}>{this.props.card.front}</Markdown>
-        </div>
-      )
-    }
-
-    // Back
-    if (this.props.card.type === 1) {
-      return (
-        <div className='text-center'>
-          <Markdown options={{ highlight }}>{this.props.card.back}</Markdown>
-        </div>
-      )
-    } else {
-      return (
-        <Markdown options={{ highlight }}>{this.props.card.back}</Markdown>
-      )
-    }
+    return (
+      <Markdown options={{ highlight }}>{this.state.isFront ? this.props.card.front : this.props.card.back}</Markdown>
+    )
   }
 
   render () {
