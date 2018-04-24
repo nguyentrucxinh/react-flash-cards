@@ -14,6 +14,7 @@ class Memorize extends Component {
     }
 
     this.handleButtonNextCard = this.handleButtonNextCard.bind(this)
+    this.handleButtonPrevCard = this.handleButtonPrevCard.bind(this)
     this.handleButtonRandomCard = this.handleButtonRandomCard.bind(this)
     this.handleButtonKnown = this.handleButtonKnown.bind(this)
     this.handleButtonFlipCard = this.handleButtonFlipCard.bind(this)
@@ -25,6 +26,14 @@ class Memorize extends Component {
     this.backToFrontCard()
 
     this.props.onGetCardNext(this.props.card._id)
+  }
+
+  handleButtonPrevCard (e) {
+    e.preventDefault()
+
+    this.backToFrontCard()
+
+    this.props.onGetCardPrev(this.props.card._id)
   }
 
   handleButtonRandomCard (e) {
@@ -79,6 +88,45 @@ class Memorize extends Component {
     return (
       <div>
 
+        {/* Buttons */}
+        <div className='row'>
+          <div className='col-xs-12 text-center'>
+            <a onClick={this.handleButtonPrevCard} className='btn btn-primary btn-lg'>
+              <i className='fa fa-arrow-left' />
+              Prev Card
+            </a>
+            &nbsp;
+            &nbsp;
+            <a onClick={this.handleButtonFlipCard} className='btn btn-primary btn-lg flipCard'>
+              <i className='fa fa-exchange' />
+              Flip Card
+            </a>
+            &nbsp;
+            &nbsp;
+            <a onClick={this.handleButtonNextCard} className='btn btn-primary btn-lg'>
+              Next Card
+              <i className='fa fa-arrow-right' />
+            </a>
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className='col-xs-12 text-center'>
+            <a onClick={this.handleButtonRandomCard} className='btn btn-primary btn-lg'>
+              Random Card
+              <i className='fa fa-random' />
+            </a>
+            &nbsp;
+            &nbsp;
+            <a onClick={this.handleButtonKnown} className='btn btn-success btn-lg'>
+              <i className='fa fa-check' />
+              I Know It
+            </a>
+          </div>
+        </div>
+
+        <hr />
+
         {/* Card Type */}
         <div className='row'>
           <div className='col-xs-12 text-center'>
@@ -89,8 +137,6 @@ class Memorize extends Component {
             </div>
           </div>
         </div >
-
-        <hr />
 
         {/* Card */}
         <div className='row memorizePanel'>
@@ -106,34 +152,6 @@ class Memorize extends Component {
               </div>
             </div>
 
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className='row'>
-          <div className='col-xs-12 text-center'>
-            <a onClick={this.handleButtonFlipCard} className='btn btn-primary btn-lg flipCard'>
-              <i className='fa fa-exchange' />
-              Flip Card
-            </a>
-            &nbsp;
-            &nbsp;
-            <a onClick={this.handleButtonKnown} className='btn btn-success btn-lg'>
-              <i className='fa fa-check' />
-              I Know It
-            </a>
-            &nbsp;
-            &nbsp;
-            <a onClick={this.handleButtonRandomCard} className='btn btn-primary btn-lg'>
-              Random Card
-              <i className='fa fa-random' />
-            </a>
-            &nbsp;
-            &nbsp;
-            <a onClick={this.handleButtonNextCard} className='btn btn-primary btn-lg'>
-              Next Card
-              <i className='fa fa-arrow-right' />
-            </a>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 export const GET_CARDS = '/api/cards'
 export const GET_CARD = '/api/cards'
 export const GET_CARD_NEXT = '/api/cards/next'
+export const GET_CARD_PREV = '/api/cards/prev'
 export const GET_CARD_RAMDOM = '/api/cards/random'
 export const GET_CARD_FIRST = '/api/cards/first'
 export const CREATE_CARD = '/api/cards'

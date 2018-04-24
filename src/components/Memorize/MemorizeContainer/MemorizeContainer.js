@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getCardRandom } from '../../../actions/getCardRandom'
 import { updateCard } from '../../../actions/updateCardAction'
 import { getCardNext } from '../../../actions/getCardNextAction'
+import { getCardPrev } from '../../../actions/getCardPrevAction'
 import { getCardFirst } from '../../../actions/getCardFirstAction'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -18,6 +19,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   onGetCardNext: (id) => {
     dispatch(getCardNext(id))
+  },
+  onGetCardPrev: (id) => {
+    dispatch(getCardPrev(id))
   },
   onUpdateCard: (id, data) => {
     dispatch(updateCard(id, data))
