@@ -50,6 +50,7 @@ class Form extends Component {
     } else {
       this.props.onUpdateCard(this.props.card._id, this.state.card)
     }
+    // this.setState({ card: { _id: null, front: '', back: '' } })
   }
 
   handButtonDeleteCard (e) {
