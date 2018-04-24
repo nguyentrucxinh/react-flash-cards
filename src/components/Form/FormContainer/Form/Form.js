@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
 const TYPE = {
   title: 0,
@@ -118,10 +119,11 @@ class Form extends Component {
               </div>
             </div>
             <div className='col-xs-6 text-right'>
-              <a onChange={this.handButtonDeleteCard} className='btn btn-danger btn-xs'>
-                <i className='fa fa-trash' />
-                Remove
-                </a>
+               {this.isCreate() ? (
+                  <div></div>
+                ) : (
+                  <RemoveButton id={card._id} handButtonDeleteCard={this.handButtonDeleteCard} />
+                )}
             </div>
           </div>
 
@@ -145,5 +147,15 @@ Form.propTypes = {
   onDeleteCard: PropTypes.func.isRequired,
   onGetCard: PropTypes.func.isRequired
 }
+
+const RemoveButton = withRouter(
+  ({ history, id, handButtonDeleteCard }) =>
+    <a onClick={() => {
+      handButtonDeleteCard()
+      history.push(`/list`)
+    }} className='btn btn-danger btn-xs'>
+      <i className='fa fa-trash' aria-hidden='true' /> Remove
+    </a>
+)
 
 export default Form
