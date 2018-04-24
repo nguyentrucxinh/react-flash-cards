@@ -19,3 +19,10 @@ export const createCard = (data) => dispatch => {
       throw new Error(error)
     })
 }
+
+// export const createCard = (data) => dispatch => {
+//   return axios.post(`${process.env.REACT_APP_HOST_API}${CREATE_CARD}`, data)
+//     .then(response => response.data.content)
+//     .then(card => dispatch(receiveCard(card)))
+//     .catch(error => throw new Error(error))
+// }
