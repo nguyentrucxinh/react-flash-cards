@@ -93,18 +93,15 @@ class Memorize extends Component {
           <div className='col-xs-12 text-center'>
             <a onClick={this.handleButtonPrevCard} className='btn btn-primary btn-lg'>
               <i className='fa fa-arrow-left' />
-              Prev Card
             </a>
             &nbsp;
             &nbsp;
             <a onClick={this.handleButtonFlipCard} className='btn btn-default btn-lg flipCard'>
               <i className='fa fa-exchange' />
-              Flip Card
             </a>
             &nbsp;
             &nbsp;
             <a onClick={this.handleButtonNextCard} className='btn btn-primary btn-lg'>
-              Next Card
               <i className='fa fa-arrow-right' />
             </a>
           </div>
@@ -114,14 +111,12 @@ class Memorize extends Component {
           <div className='col-xs-12 text-center'>
             <br />
             <a onClick={this.handleButtonRandomCard} className='btn btn-primary btn-lg'>
-              Random Card
               <i className='fa fa-random' />
             </a>
             &nbsp;
             &nbsp;
             <a onClick={this.handleButtonKnown} className='btn btn-success btn-lg'>
               <i className='fa fa-check' />
-              I Know It
             </a>
           </div>
         </div>
