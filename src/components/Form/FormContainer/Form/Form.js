@@ -47,15 +47,17 @@ class Form extends Component {
     if (this.isCreate()) {
       // this.setState({ card: { _id: null } })
       this.props.onCreateCard(this.state.card)
+      // this.setState({ card: { _id: null, front: '', back: '' } })
     } else {
       this.props.onUpdateCard(this.props.card._id, this.state.card)
+      // redirect to /list
     }
-    // this.setState({ card: { _id: null, front: '', back: '' } })
   }
 
   handButtonDeleteCard (e) {
     e.preventDefault()
     this.props.onDeleteCard(this.props.card._id)
+    // redirect to /list
   }
 
   handleChangeType (e) {
