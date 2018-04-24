@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const TYPE = {
+  title: 0,
   general: 1,
   code: 2
 }
@@ -85,6 +86,9 @@ class Form extends Component {
 
           {/* Card Type */}
           <div className='form-group'>
+            <label htmlFor='title' className='btn btn-default btn-lg'>Title &nbsp;
+                <input value={TYPE.title} onChange={this.handleChangeType} checked={Number(this.state.card.type) === TYPE.title} type='radio' name='type' id='title' />
+            </label>
             <label htmlFor='general' className='btn btn-default btn-lg'>General &nbsp;
                 <input value={TYPE.general} onChange={this.handleChangeType} checked={Number(this.state.card.type) === TYPE.general} type='radio' name='type' id='general' />
             </label>
