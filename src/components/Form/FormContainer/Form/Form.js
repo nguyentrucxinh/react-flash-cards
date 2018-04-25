@@ -104,7 +104,7 @@ class Form extends Component {
           {/* Card */}
           <div className='form-group'>
             <label htmlFor='front'>Front of Card</label>
-            <input value={this.state.card.front} onChange={this.handleChangeFront} type='text' name='front' id='front' className='form-control' />
+            <textarea value={this.state.card.front} onChange={this.handleChangeFront} name='front' className='form-control' id='front' rows='6' />
           </div>
           <div className='form-group'>
             <label htmlFor='back'>Back of Card</label>
